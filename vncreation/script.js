@@ -46,8 +46,8 @@ function copyText(text) {
 }
 
 document.getElementById('generateButton').addEventListener('click', function() {
-    const keyword = document.getElementById('keyword').value;  // 确保页面有对应的输入框
-    const platform = document.getElementById('platform').value;  // 确保页面有对应的选择框
+    const keyword = document.getElementById('keyword').value;
+    const platform = document.getElementById('platform').value;
 
     fetch('/.netlify/functions/generate-title', {
         method: 'POST',
