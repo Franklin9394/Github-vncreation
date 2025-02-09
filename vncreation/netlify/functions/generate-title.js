@@ -23,6 +23,12 @@ function processTitles(text) {
         .map(line => line.replace(/^\d+\.\s*/, ''));
 }
 
+// 模拟数据测试（正式使用时替换为真实API）
+const testTitles = [
+    "3 cách làm bánh mì siêu nhanh 🥖 #banhmi",
+    "5 phút học tiếng Việt cơ bản 🇻🇳 #tiengviet"
+];
+
 exports.handler = async (event) => {
     try {
         const { keyword, platform } = JSON.parse(event.body);
@@ -41,9 +47,8 @@ exports.handler = async (event) => {
         return {
             statusCode: 200,
             headers: {
-                'Content-Type': 'application/json; charset=utf-8',
                 'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Headers': 'Content-Type'
+                'Content-Type': 'application/json; charset=utf-8'
             },
             body: JSON.stringify({ titles: processedTitles })
         };
@@ -53,7 +58,6 @@ exports.handler = async (event) => {
             statusCode: 500,
             headers: {
                 'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Headers': 'Content-Type',
                 'Content-Type': 'application/json; charset=utf-8'
             },
             body: JSON.stringify({ error: error.message || 'Internal Server Error' })
